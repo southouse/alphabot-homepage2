@@ -35,22 +35,24 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="group relative p-10 rounded-xl bg-dark-lighter/50 border border-white/5 hover:border-primary/30 transition-all duration-300"
+      className="group relative p-10 rounded-xl bg-dark-lighter/30 backdrop-blur-sm border border-accent/20 hover:border-accent/50 transition-all duration-300"
     >
-      <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-primary/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 rounded-xl bg-accent/0 group-hover:bg-accent/5 blur-2xl transition-all duration-300"></div>
+      <div className="relative text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
         {feature.icon}
       </div>
-      <h3 className="text-3xl font-black mb-2 text-white">
+      <h3 className="relative text-2xl font-black mb-2 text-white group-hover:text-accent transition-all duration-300">
         {feature.title}
       </h3>
-      <p className="text-lg text-primary mb-4 font-semibold">
+      <p className="relative text-base text-accent mb-4 font-semibold">
         {feature.subtitle}
       </p>
-      <p className="text-gray-400 leading-relaxed text-base">
+      <p className="relative text-gray-400 leading-relaxed text-base">
         {feature.description}
       </p>
-      <button className="mt-6 text-primary hover:text-primary-light font-semibold text-sm transition-colors">
-        자세히 보기 →
+      <button className="relative mt-6 text-accent hover:text-mint font-semibold text-sm transition-colors flex items-center gap-2 group-hover:gap-3 transition-all">
+        자세히 보기 <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
       </button>
     </motion.div>
   );
@@ -61,17 +63,17 @@ export default function Features() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-black">
-      <div className="container mx-auto max-w-7xl">
+    <section ref={ref} className="py-20 px-6 relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">
             승리하는 전략을 만드는
-            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mt-2">
+            <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(74,144,226,0.5)] mt-2">
               AI 에이전트
             </span>
           </h2>

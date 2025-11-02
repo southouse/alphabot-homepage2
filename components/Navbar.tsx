@@ -9,7 +9,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-lg border-b border-white/5"
+      className="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-xl border-b border-accent/40"
     >
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-4">
             <Link 
               href="#contact" 
-              className="px-7 py-2.5 bg-primary text-black rounded-md font-bold text-sm hover:bg-primary-light hover:shadow-lg hover:shadow-primary/30 transition-all"
+              className="px-6 py-2 bg-gradient-to-r from-accent-dark to-purple text-white rounded-md font-bold text-sm hover:shadow-lg hover:shadow-purple/60 hover:from-purple hover:to-accent-dark transition-all"
             >
               시작하기
             </Link>

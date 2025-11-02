@@ -27,16 +27,16 @@ export default function Introduction() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="py-24 px-4 bg-gradient-to-b from-dark-lighter to-dark">
-      <div className="container mx-auto">
+    <section ref={ref} className="py-20 px-4 relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-primary-light to-accent bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <span className="bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(74,144,226,0.4)]">
               알파봇의 3단계 자동매매 프로세스
             </span>
           </h2>
@@ -49,9 +49,10 @@ export default function Introduction() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 hover:border-accent/50 transition-all duration-300 group"
+              className="relative p-8 rounded-2xl bg-dark-lighter/30 backdrop-blur-sm border border-accent/30 hover:border-accent/60 transition-all duration-300 group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-primary/15 to-primary-light/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-2xl bg-accent/0 group-hover:bg-accent/10 blur-2xl transition-all duration-300"></div>
               
               <div className="relative z-10">
                 <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">

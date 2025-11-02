@@ -34,17 +34,17 @@ export default function MainFeatures() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-black">
-      <div className="container mx-auto max-w-7xl">
+    <section ref={ref} className="py-20 px-6 relative">
+      <div className="container mx-auto max-w-5xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">
             실제 트레이더,
-            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mt-2">
+            <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(74,144,226,0.5)] mt-2">
               실제 성과
             </span>
           </h2>
@@ -63,10 +63,9 @@ export default function MainFeatures() {
               className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16`}
             >
               <div className="flex-1 w-full">
-                <div className="relative p-16 rounded-2xl bg-dark-lighter/30 border border-white/5 group hover:border-primary/20 transition-all duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  <div className="relative z-10 flex items-center justify-center text-9xl">
+              <div className="relative p-16 rounded-2xl bg-dark-lighter/20 backdrop-blur-sm border border-accent/20 group hover:border-accent/50 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/15 to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-2xl bg-accent/0 group-hover:bg-accent/5 blur-2xl transition-all duration-300"></div>                  <div className="relative z-10 flex items-center justify-center text-9xl">
                     {feature.image}
                   </div>
                 </div>
@@ -76,7 +75,7 @@ export default function MainFeatures() {
                 <h3 className="text-4xl md:text-5xl font-black mb-4 text-white">
                   {feature.title}
                 </h3>
-                <p className="text-xl text-primary mb-8 font-semibold">
+                <p className="text-xl text-accent-light mb-8 font-semibold">
                   {feature.subtitle}
                 </p>
                 <p className="text-lg text-gray-400 leading-relaxed whitespace-pre-line mb-10">
@@ -85,9 +84,10 @@ export default function MainFeatures() {
                 {feature.stats && (
                   <div className="grid grid-cols-3 gap-6">
                     {feature.stats.map((stat, idx) => (
-                      <div key={idx} className="p-6 rounded-xl bg-dark-lighter/50 border border-white/5">
-                        <div className="text-3xl font-black text-primary mb-2">{stat.value}</div>
-                        <div className="text-sm text-gray-400">{stat.label}</div>
+                      <div key={idx} className="relative group p-6 rounded-xl bg-dark-lighter/30 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-300">
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative text-2xl font-black text-accent drop-shadow-[0_0_20px_rgba(0,180,255,0.6)] mb-2">{stat.value}</div>
+                        <div className="relative text-sm text-gray-400">{stat.label}</div>
                       </div>
                     ))}
                   </div>
@@ -101,18 +101,20 @@ export default function MainFeatures() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-32 p-16 rounded-2xl bg-dark-lighter/30 border border-white/10"
+          className="relative text-center mt-32 p-16 rounded-2xl bg-dark-lighter/20 backdrop-blur-sm border border-accent/30 overflow-hidden"
         >
-          <h3 className="text-4xl md:text-5xl font-black mb-6 text-white">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-primary/5 to-transparent"></div>
+          <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-accent/10 rounded-full blur-[100px]"></div>
+          <h3 className="relative text-4xl md:text-5xl font-black mb-6 text-white">
             지금 바로 스마트한 트레이딩 시작하기
           </h3>
-          <p className="text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
+          <p className="relative text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
             AI 기반 전략을 사용하는 15,000명 이상의 트레이더와 함께하세요. 30일 무료 체험으로 최고의 자동매매를 경험하세요.
           </p>
-          <button className="px-12 py-5 bg-primary text-black rounded-lg font-bold text-xl hover:bg-primary-light hover:shadow-xl hover:shadow-primary/30 transition-all transform hover:scale-105 mb-4">
-            30일 무료 체험 시작하기
+          <button className="relative px-10 py-4 bg-gradient-to-r from-accent-dark to-purple text-white rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-purple/70 hover:from-purple hover:to-accent-dark transition-all transform hover:scale-105 mb-4 overflow-hidden group">
+            <span className="relative z-10">30일 무료 체험 시작하기</span>
           </button>
-          <p className="text-sm text-gray-500 mt-6">
+          <p className="relative text-sm text-gray-500 mt-6">
             버튼을 클릭하여 AI 기반 트레이딩 전략을 시작하세요
           </p>
         </motion.div>
