@@ -13,9 +13,9 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-              <span className="block text-white mb-2">감정은 지우고, 수익은 쌓는다</span>
+              <span className="block text-white mb-2">Start trading like</span>
               <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(74,144,226,0.5)]">
-                AI 자동매매 알파봇
+                smart money
               </span>
             </h1>
           </motion.div>
@@ -26,7 +26,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
           >
-            전략을 찾는 #1 AI 에이전트, <span className="text-accent font-semibold">15,000명 이상의 트레이더가</span> 사용하는 최고의 트레이딩 지표로 구동됩니다.
+            {/* 전략을 찾는 #1 AI 에이전트, <span className="text-accent font-semibold">15,000명 이상의 트레이더가</span> 사용하는 최고의 트레이딩 지표로 구동됩니다. */}
+            The #1 AI agent to find strategies, powered by <br/>
+the best trading indicators used by 15,000+ traders.
+
           </motion.p>
 
           <motion.div 
@@ -36,11 +39,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-6"
           >
             <button className="px-8 py-3.5 bg-gradient-to-r from-accent-dark to-purple text-white rounded-lg font-bold text-base hover:shadow-2xl hover:shadow-purple/70 hover:from-purple hover:to-accent-dark transition-all transform hover:scale-105">
-              30일 무료 체험 시작하기
+              Get 30 Days Risk Free
             </button>
           </motion.div>
 
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -64,12 +67,12 @@ export default function Hero() {
               <div className="relative text-gray-400 text-base">자동<br />매매</div>
               <div className="absolute inset-0 rounded-xl bg-accent/0 group-hover:bg-mint/15 blur-xl transition-all duration-300"></div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div 
+      {/* <motion.div 
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
@@ -77,7 +80,7 @@ export default function Hero() {
         <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-primary/80 rounded-full mt-2"></div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
