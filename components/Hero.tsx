@@ -13,9 +13,9 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-              <span className="block text-white mb-2">Start trading like</span>
+              <span className="block text-white mb-2">잠자는 동안에도</span>
               <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(74,144,226,0.5)]">
-                smart money
+                트레이딩은 계속됩니다
               </span>
             </h1>
           </motion.div>
@@ -26,10 +26,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
           >
-            {/* 전략을 찾는 #1 AI 에이전트, <span className="text-accent font-semibold">15,000명 이상의 트레이더가</span> 사용하는 최고의 트레이딩 지표로 구동됩니다. */}
-            The #1 AI agent to find strategies, powered by <br/>
-the best trading indicators used by 15,000+ traders.
-
+            차트를 보며 고민하던 시간, <span className="text-accent font-semibold">이제 당신의 삶을 위해 쓰세요</span><br/>
+            AI가 24시간 시장을 분석하고 최적의 타이밍에 매매합니다
           </motion.p>
 
           <motion.div 
@@ -39,7 +37,7 @@ the best trading indicators used by 15,000+ traders.
             className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-6"
           >
             <button className="px-8 py-3.5 bg-gradient-to-r from-accent-dark to-purple text-white rounded-lg font-bold text-base hover:shadow-2xl hover:shadow-purple/70 hover:from-purple hover:to-accent-dark transition-all transform hover:scale-105">
-              Get 30 Days Risk Free
+              지금 시작하기
             </button>
           </motion.div>
 

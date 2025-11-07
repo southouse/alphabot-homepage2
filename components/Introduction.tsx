@@ -16,13 +16,13 @@ const introSlides = [
     step: '2단계',
     title: '하락장 대응',
     description: '가격 하락 시에도 패닉하지 않습니다. 알파봇 로직이 판단하는 지지 구간에서만 정확하게 추가 매수(순환매)를 실행하여 평균 단가를 낮춥니다. 감정 없는 AI의 냉철한 판단으로 하락장을 기회로 만듭니다.',
-    image: '/images/chart2.png'
+    image: '/images/circle-position.jpg'
   },
   {
     step: '3단계',
     title: '자동 분할 익절',
     description: '평균 단가 2% 상승 시마다 자동으로 물량의 일부(30%, 40%...)를 분할 매도하여 수익을 실시간으로 확정합니다. 욕심을 부리지 않고 안정적으로 수익을 쌓아가는 전략으로 장기적인 성공을 보장합니다.',
-    image: '/images/chart3.png'
+    image: '/images/upupup.png'
   },
 ];
 

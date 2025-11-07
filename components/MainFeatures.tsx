@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const mainFeatures = [
   {
@@ -14,7 +15,7 @@ const mainFeatures = [
       { label: '승률', value: '86.1%' },
       { label: '기간', value: '5년' }
     ],
-    image: '📊'
+    image: '/images/back-test.png'
   },
   {
     title: '실제 계좌 성과',
@@ -25,7 +26,7 @@ const mainFeatures = [
       { label: '사례 B', value: '26.27%' },
       { label: '안정성', value: '높음' }
     ],
-    image: '💰'
+    image: '/images/real-case.png'
   },
 ];
 
@@ -63,12 +64,19 @@ export default function MainFeatures() {
               className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16`}
             >
               <div className="flex-1 w-full">
-              <div className="relative p-16 rounded-2xl bg-dark-lighter/20 backdrop-blur-sm border border-accent/20 group hover:border-accent/50 transition-all duration-300">
+              <div className="relative p-8 rounded-2xl bg-dark-lighter/20 backdrop-blur-sm border border-accent/20 group hover:border-accent/50 transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/15 to-primary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 rounded-2xl bg-accent/0 group-hover:bg-accent/5 blur-2xl transition-all duration-300"></div>                  <div className="relative z-10 flex items-center justify-center text-9xl">
-                    {feature.image}
-                  </div>
+                <div className="absolute inset-0 rounded-2xl bg-accent/0 group-hover:bg-accent/5 blur-2xl transition-all duration-300"></div>                  
+                <div className="relative z-10 rounded-xl overflow-hidden">
+                  <Image 
+                    src={feature.image} 
+                    alt={feature.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                  />
                 </div>
+              </div>
               </div>
 
               <div className="flex-1 text-center lg:text-left">
