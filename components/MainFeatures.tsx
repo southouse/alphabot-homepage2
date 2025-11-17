@@ -35,33 +35,33 @@ export default function MainFeatures() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="py-20 px-6 relative">
-      <div className="container mx-auto max-w-5xl relative z-10">
+    <section ref={ref} className="py-40 px-6 relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-black mb-8 text-white">
             실제 트레이더,
-            <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(74,144,226,0.5)] mt-2">
+            <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(74,144,226,0.5)] mt-4">
               실제 성과
             </span>
           </h2>
-          <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 mt-8 max-w-3xl mx-auto leading-loose">
             백테스팅과 실제 트레이딩 계좌에서 검증된 결과
           </p>
         </motion.div>
 
-        <div className="space-y-24">
+        <div className="space-y-32">
           {mainFeatures.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16`}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-20`}
             >
               <div className="flex-1 w-full">
               <div className="relative p-8 rounded-2xl bg-dark-lighter/20 backdrop-blur-sm border border-accent/20 group hover:border-accent/50 transition-all duration-300">
@@ -80,13 +80,13 @@ export default function MainFeatures() {
               </div>
 
               <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-4xl md:text-5xl font-black mb-4 text-white">
+                <h3 className="text-4xl md:text-5xl font-black mb-6 text-white">
                   {feature.title}
                 </h3>
-                <p className="text-xl text-accent-light mb-8 font-semibold">
+                <p className="text-xl text-accent-light mb-10 font-semibold">
                   {feature.subtitle}
                 </p>
-                <p className="text-lg text-gray-400 leading-relaxed whitespace-pre-line mb-10">
+                <p className="text-lg text-gray-400 leading-loose whitespace-pre-line mb-12">
                   {feature.description}
                 </p>
                 {feature.stats && (

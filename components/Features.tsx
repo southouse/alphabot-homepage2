@@ -37,16 +37,16 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className={`grid md:grid-cols-2 gap-16 items-center ${!isEven ? 'md:grid-flow-dense' : ''}`}
+      className={`grid md:grid-cols-2 gap-20 items-center ${!isEven ? 'md:grid-flow-dense' : ''}`}
     >
       <div className={`${!isEven ? 'md:col-start-2' : ''}`}>
-        <div className="text-base font-semibold tracking-wide mb-6 bg-gradient-to-r from-cyan-bright via-accent-light to-cyan bg-clip-text text-transparent">
+        <div className="text-base font-semibold tracking-wide mb-8 bg-gradient-to-r from-cyan-bright via-accent-light to-cyan bg-clip-text text-transparent">
           {feature.category}
         </div>
-        <h3 className="text-5xl md:text-6xl font-black mb-8 text-white leading-[1.1]">
+        <h3 className="text-5xl md:text-6xl font-black mb-10 text-white leading-[1.2]">
           {feature.title}
         </h3>
-        <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-12">
+        <p className="text-lg md:text-xl text-gray-400 leading-loose mb-12">
           {feature.description}
         </p>
         <button className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium text-base transition-all duration-300 flex items-center gap-2 group">
@@ -74,13 +74,10 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
 }
 
 export default function Features() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
   return (
-    <section ref={ref} className="py-32 px-6 relative">
+    <section className="py-32 px-6 relative">
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="space-y-40">
+        <div className="space-y-48">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}

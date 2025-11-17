@@ -40,13 +40,13 @@ export default function Introduction() {
   };
 
   return (
-    <section ref={ref} className="py-32 px-6 relative">
+    <section ref={ref} className="py-40 px-6 relative">
       <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
           <div className="flex items-center justify-center gap-12">
             <button

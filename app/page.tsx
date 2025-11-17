@@ -1,3 +1,6 @@
+import VideoIntro from "@/components/VideoIntro";
+import RealData from "@/components/RealData";
+import TradingCards from "@/components/TradingCards";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Introduction from "@/components/Introduction";
@@ -48,7 +51,10 @@ export default function Home() {
       
       <div className="relative z-10">
         <Navbar />
-        <Hero />
+        <VideoIntro />
+        <RealData />
+        <TradingCards />
+        {/* <Hero /> */}
         <Features />
         <Introduction />
         <MainFeatures />

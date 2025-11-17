@@ -4,16 +4,16 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center space-y-10 max-w-6xl mx-auto">
+    <section className="relative min-h-screen flex items-center justify-center py-32 px-6">
+      <div className="container mx-auto relative z-10">
+        <div className="text-center space-y-12 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-              <span className="block text-white mb-2">잠자는 동안에도</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-relaxed mb-8">
+              <span className="block text-white mb-4">잠자는 동안에도</span>
               <span className="block bg-gradient-to-r from-accent-light via-cyan to-mint bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(74,144,226,0.5)]">
                 트레이딩은 계속됩니다
               </span>
@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-loose"
           >
             차트를 보며 고민하던 시간, <span className="text-accent font-semibold">이제 당신의 삶을 위해 쓰세요</span><br/>
             AI가 24시간 시장을 분석하고 최적의 타이밍에 매매합니다
@@ -34,7 +34,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-6"
+            className="flex flex-col sm:flex-row gap-5 justify-center items-center pt-8"
           >
             <button className="px-8 py-3.5 bg-gradient-to-r from-accent-dark to-purple text-white rounded-lg font-bold text-base hover:shadow-2xl hover:shadow-purple/70 hover:from-purple hover:to-accent-dark transition-all transform hover:scale-105">
               지금 시작하기
