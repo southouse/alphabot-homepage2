@@ -41,6 +41,25 @@ export default function Introduction() {
 
   return (
     <section ref={ref} className="py-40 px-6 relative">
+      {/* Introduction: 물결치는 블루/시안 오로라 */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* 상단 중앙 블루 오로라 - 파도치는 형태 */}
+        <div className="absolute left-[15%] top-[-30%] h-[270px] w-[580px] rotate-[22deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.92)_0%,rgba(37,99,235,0.78)_40%,rgba(29,78,216,0.54)_68%,rgba(15,23,42,0)_100%)] opacity-80 blur-[22px]"></div>
+          <div className="absolute top-[22%] left-[25%] h-[52%] w-[58%] bg-[radial-gradient(circle,rgba(96,165,250,0.82)_0%,rgba(59,130,246,0.5)_54%,rgba(15,23,42,0)_100%)] opacity-68 blur-[16px]"></div>
+        </div>
+        
+        {/* 우측 중앙 시안 오로라 - 구불구불 */}
+        <div className="absolute right-[-5%] top-[18%] h-[220px] w-[490px] rotate-[-15deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_48%_50%,rgba(34,211,238,0.88)_0%,rgba(6,182,212,0.7)_44%,rgba(8,145,178,0.46)_72%,rgba(15,23,42,0)_100%)] opacity-76 blur-[20px]"></div>
+        </div>
+        
+        {/* 좌측 하단 인디고 오로라 - 번지는 형태 */}
+        <div className="absolute left-[8%] bottom-[-12%] h-[190px] w-[420px] rotate-[10deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_58%_50%,rgba(99,102,241,0.86)_0%,rgba(79,70,229,0.68)_46%,rgba(67,56,202,0.4)_74%,rgba(15,23,42,0)_100%)] opacity-70 blur-[20px]"></div>
+        </div>
+      </div>
+      
       <div className="container mx-auto max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

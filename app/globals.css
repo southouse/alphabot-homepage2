@@ -4,13 +4,14 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 5, 10, 30;
-  --background-end-rgb: 20, 60, 150;
+  /* LuxAlgo 실제 배경은 더 어두운 톤에 가깝게 보이므로 살짝 다운시킴 */
+  --background-start-rgb: 2, 6, 22;
+  --background-end-rgb: 2, 6, 22;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #050A1E;
+  background: rgb(2, 6, 22);
 }
 
 @layer utilities {

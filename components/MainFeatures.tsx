@@ -36,6 +36,26 @@ export default function MainFeatures() {
 
   return (
     <section ref={ref} className="py-40 px-6 relative">
+      {/* MainFeatures: 물결치는 블루/민트 오로라 */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* 좌측 상단 블루 오로라 (첫 번째 카드) - 파도치는 형태 */}
+        <div className="absolute left-[-15%] top-[-5%] h-[250px] w-[530px] rotate-[28deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.92)_0%,rgba(37,99,235,0.76)_42%,rgba(29,78,216,0.52)_70%,rgba(15,23,42,0)_100%)] opacity-80 blur-[22px]"></div>
+          <div className="absolute top-[26%] left-[24%] h-[48%] w-[54%] bg-[radial-gradient(circle,rgba(96,165,250,0.8)_0%,rgba(59,130,246,0.48)_56%,rgba(15,23,42,0)_100%)] opacity-66 blur-[15px]"></div>
+        </div>
+        
+        {/* 우측 중앙 민트 오로라 (두 번째 카드) - 구불구불 */}
+        <div className="absolute right-[-12%] top-[20%] h-[260px] w-[540px] rotate-[-26deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(45,212,191,0.9)_0%,rgba(20,184,166,0.74)_42%,rgba(13,148,136,0.5)_70%,rgba(15,23,42,0)_100%)] opacity-82 blur-[24px]"></div>
+          <div className="absolute bottom-[28%] right-[22%] h-[46%] w-[52%] bg-[radial-gradient(circle,rgba(94,234,212,0.78)_0%,rgba(45,212,191,0.46)_54%,rgba(15,23,42,0)_100%)] opacity-68 blur-[16px]"></div>
+        </div>
+        
+        {/* 상단 중앙 시안 오로라 - 번지는 형태 */}
+        <div className="absolute left-[30%] top-[-18%] h-[200px] w-[450px] rotate-[8deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(34,211,238,0.88)_0%,rgba(6,182,212,0.68)_46%,rgba(8,145,178,0.44)_74%,rgba(15,23,42,0)_100%)] opacity-76 blur-[20px]"></div>
+        </div>
+      </div>
+      
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

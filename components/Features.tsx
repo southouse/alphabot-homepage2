@@ -76,6 +76,26 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
 export default function Features() {
   return (
     <section className="py-32 px-6 relative">
+      {/* Features: 물결치는 시안/민트 오로라 */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* 우측 상단 시안 오로라 - 파도치는 형태 */}
+        <div className="absolute right-[-18%] top-[-28%] h-[260px] w-[560px] rotate-[-30deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.94)_0%,rgba(6,182,212,0.82)_38%,rgba(8,145,178,0.58)_66%,rgba(15,23,42,0)_100%)] opacity-82 blur-[22px]"></div>
+          <div className="absolute top-[20%] right-[18%] h-[55%] w-[65%] bg-[radial-gradient(circle,rgba(103,232,249,0.8)_0%,rgba(34,211,238,0.5)_52%,rgba(15,23,42,0)_100%)] opacity-68 blur-[16px]"></div>
+        </div>
+        
+        {/* 좌측 중앙 민트 오로라 - 구불구불 */}
+        <div className="absolute left-[-10%] top-[15%] h-[210px] w-[480px] rotate-[18deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_50%,rgba(52,211,153,0.9)_0%,rgba(16,185,129,0.72)_42%,rgba(5,150,105,0.48)_70%,rgba(15,23,42,0)_100%)] opacity-76 blur-[20px]"></div>
+          <div className="absolute bottom-[25%] left-[22%] h-[48%] w-[56%] bg-[radial-gradient(circle,rgba(110,231,183,0.75)_0%,rgba(52,211,153,0.45)_55%,rgba(15,23,42,0)_100%)] opacity-64 blur-[15px]"></div>
+        </div>
+        
+        {/* 하단 틸 오로라 - 번지는 형태 */}
+        <div className="absolute left-[25%] bottom-[-15%] h-[190px] w-[450px] rotate-[12deg]">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_50%,rgba(45,212,191,0.86)_0%,rgba(20,184,166,0.68)_45%,rgba(13,148,136,0.42)_75%,rgba(15,23,42,0)_100%)] opacity-72 blur-[20px]"></div>
+        </div>
+      </div>
+      
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="space-y-48">
           {features.map((feature, index) => (
