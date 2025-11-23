@@ -10,20 +10,20 @@ const sections = [
     id: 'profit-cards',
     title: '실제 수익 내역',
     cards: [
-      { id: 1, image: '/images/profit-card-1.png', pnl: 76.50, lastPrice: 101996.4, avgPrice: 94193.6 },
-      { id: 2, image: '/images/profit-card-2.png', pnl: 52.34, lastPrice: 100234.5, avgPrice: 95432.1 },
-      { id: 3, image: '/images/profit-card-3.png', pnl: 68.92, lastPrice: 102145.8, avgPrice: 93876.2 },
-      { id: 4, image: '/images/profit-card-4.png', pnl: 45.67, lastPrice: 99876.3, avgPrice: 96234.5 },
-      { id: 5, image: '/images/profit-card-5.png', pnl: 81.23, lastPrice: 103456.2, avgPrice: 92567.8 },
-      { id: 6, image: '/images/profit-card-6.png', pnl: 39.45, lastPrice: 98765.1, avgPrice: 97123.4 },
-      { id: 7, image: '/images/profit-card-7.png', pnl: 55.78, lastPrice: 101234.7, avgPrice: 94876.3 },
-      { id: 8, image: '/images/profit-card-8.png', pnl: 72.11, lastPrice: 102789.3, avgPrice: 93234.5 },
-      { id: 9, image: '/images/profit-card-9.png', pnl: 61.89, lastPrice: 100456.2, avgPrice: 95123.7 },
-      { id: 10, image: '/images/profit-card-10.png', pnl: 48.23, lastPrice: 99234.8, avgPrice: 96789.4 },
-      { id: 11, image: '/images/profit-card-11.png', pnl: 74.56, lastPrice: 103234.1, avgPrice: 92987.3 },
-      { id: 12, image: '/images/profit-card-12.png', pnl: 42.91, lastPrice: 98567.4, avgPrice: 97456.8 },
-      { id: 13, image: '/images/profit-card-13.png', pnl: 58.34, lastPrice: 101345.6, avgPrice: 94567.2 },
-      { id: 14, image: '/images/profit-card-14.png', pnl: 51.78, lastPrice: 100123.7, avgPrice: 95876.4 },
+      { id: 1, image: '/images/profit/profit1.png', pnl: 76.50, lastPrice: 101996.4, avgPrice: 94193.6 },
+      { id: 2, image: '/images/profit/profit2.png', pnl: 52.34, lastPrice: 100234.5, avgPrice: 95432.1 },
+      { id: 3, image: '/images/profit/profit3.png', pnl: 68.92, lastPrice: 102145.8, avgPrice: 93876.2 },
+      { id: 4, image: '/images/profit/profit4.png', pnl: 45.67, lastPrice: 99876.3, avgPrice: 96234.5 },
+      { id: 5, image: '/images/profit/profit5.png', pnl: 81.23, lastPrice: 103456.2, avgPrice: 92567.8 },
+      { id: 6, image: '/images/profit/profit6.png', pnl: 39.45, lastPrice: 98765.1, avgPrice: 97123.4 },
+      { id: 7, image: '/images/profit/profit7.png', pnl: 55.78, lastPrice: 101234.7, avgPrice: 94876.3 },
+      { id: 8, image: '/images/profit/profit8.png', pnl: 72.11, lastPrice: 102789.3, avgPrice: 93234.5 },
+      { id: 9, image: '/images/profit/profit9.png', pnl: 61.89, lastPrice: 100456.2, avgPrice: 95123.7 },
+      { id: 10, image: '/images/profit/profit10.png', pnl: 48.23, lastPrice: 99234.8, avgPrice: 96789.4 },
+      { id: 11, image: '/images/profit/profit11.png', pnl: 74.56, lastPrice: 103234.1, avgPrice: 92987.3 },
+      { id: 12, image: '/images/profit/profit12.png', pnl: 42.91, lastPrice: 98567.4, avgPrice: 97456.8 },
+      { id: 13, image: '/images/profit/profit13.png', pnl: 58.34, lastPrice: 101345.6, avgPrice: 94567.2 },
+      { id: 14, image: '/images/profit/profit14.png', pnl: 51.78, lastPrice: 100123.7, avgPrice: 95876.4 },
     ]
   },
   {
@@ -278,57 +278,19 @@ const positions = [
                       className="absolute"
                       style={{ zIndex: pos.zIndex }}
                     >
-                      <div className="relative w-52 h-72 group cursor-pointer">
+                      <div className="relative w-52 h-64 group cursor-pointer">
                         {/* 카드 글로우 효과 */}
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan/30 via-purple/20 to-mint/30 rounded-2xl blur-2xl opacity-50 group-hover:opacity-100 transition-all duration-300"></div>
                         
-                        {/* 카드 본체 */}
+                        {/* 카드 본체 - 실제 이미지 사용 */}
                         <div className="relative rounded-2xl overflow-hidden border-2 border-accent/40 bg-gradient-to-br from-dark/90 to-primary-dark/80 backdrop-blur-sm shadow-2xl h-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-0 group-hover:z-50">
-                          {/* 임시 플레이스홀더 - 실제 카드 이미지와 유사한 레이아웃 */}
-                          <div className="h-full flex flex-col justify-between p-5">
-                            {/* 상단 - Unrealized PnL 라벨 */}
-                            <div>
-                              <p className="text-gray-400 text-xs mb-2">Unrealized PnL</p>
-                              <div className="flex items-baseline gap-2 mb-1">
-                                <p className="text-white font-bold text-sm">BTCUSDT</p>
-                                <span className="text-accent text-xs px-2 py-0.5 bg-accent/20 rounded">Long</span>
-                                <span className="text-white text-xs">10X</span>
-                              </div>
-                            </div>
-                            
-                            {/* 중앙 - 수익률 (큰 텍스트) */}
-                            <div className="text-center my-3">
-                              <p className={`font-black text-4xl mb-2 ${card.pnl >= 0 ? 'text-green-500' : 'text-pink-500'}`}>
-                                {card.pnl >= 0 ? '+' : ''}{card.pnl}%
-                              </p>
-                              <div className="space-y-1 text-xs">
-                                <div className="flex justify-between text-gray-400">
-                                  <span>Last Price</span>
-                                  <span className="text-white">{card.lastPrice.toLocaleString()}</span>
-                                </div>
-                                <div className="flex justify-between text-gray-400">
-                                  <span>Avg. Open Price</span>
-                                  <span className="text-white">{card.avgPrice.toLocaleString()}</span>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* 하단 - 사용자 정보 */}
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <div className="w-7 h-7 rounded-full bg-accent/30 flex items-center justify-center">
-                                  <span className="text-xs">👤</span>
-                                </div>
-                                <div>
-                                  <p className="text-white text-xs font-medium">Card {card.id}</p>
-                                  <p className="text-gray-500 text-[10px]">{new Date().toLocaleString('en-US', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}</p>
-                                </div>
-                              </div>
-                              <div className="text-[10px] text-gray-500">
-                                Code
-                              </div>
-                            </div>
-                          </div>
+                          <Image
+                            src={card.image}
+                            alt={`수익 내역 ${card.id}`}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 768px) 50vw, 208px"
+                          />
                         </div>
                       </div>
                     </motion.div>
@@ -346,50 +308,19 @@ const positions = [
                         transition={{ duration: 0.5, delay: index * 0.05 }}
                         className="relative group cursor-pointer"
                       >
-                        <div className="relative w-full aspect-[3/4]">
+                        <div className="relative w-full aspect-square">
                           {/* 카드 글로우 효과 */}
                           <div className="absolute inset-0 bg-gradient-to-br from-cyan/30 via-purple/20 to-mint/30 rounded-xl blur-xl opacity-50 group-active:opacity-100 transition-all duration-300"></div>
                           
-                          {/* 카드 본체 */}
+                          {/* 카드 본체 - 실제 이미지 사용 */}
                           <div className="relative rounded-xl overflow-hidden border-2 border-accent/40 bg-gradient-to-br from-dark/90 to-primary-dark/80 backdrop-blur-sm shadow-2xl h-full transition-all duration-300 group-active:scale-95">
-                            <div className="h-full flex flex-col justify-between p-3">
-                              {/* 상단 */}
-                              <div>
-                                <p className="text-gray-400 text-[10px] mb-1">Unrealized PnL</p>
-                                <div className="flex items-baseline gap-1 mb-1 flex-wrap">
-                                  <p className="text-white font-bold text-xs">BTCUSDT</p>
-                                  <span className="text-accent text-[10px] px-1.5 py-0.5 bg-accent/20 rounded">Long</span>
-                                  <span className="text-white text-[10px]">10X</span>
-                                </div>
-                              </div>
-                              
-                              {/* 중앙 - 수익률 */}
-                              <div className="text-center my-2">
-                                <p className={`font-black text-2xl mb-1 ${card.pnl >= 0 ? 'text-green-500' : 'text-pink-500'}`}>
-                                  {card.pnl >= 0 ? '+' : ''}{card.pnl}%
-                                </p>
-                                <div className="space-y-0.5 text-[10px]">
-                                  <div className="flex justify-between text-gray-400">
-                                    <span>Last Price</span>
-                                    <span className="text-white">{card.lastPrice.toLocaleString()}</span>
-                                  </div>
-                                  <div className="flex justify-between text-gray-400">
-                                    <span>Avg. Price</span>
-                                    <span className="text-white">{card.avgPrice.toLocaleString()}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              {/* 하단 */}
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-1.5">
-                                  <div className="w-5 h-5 rounded-full bg-accent/30 flex items-center justify-center text-[10px]">
-                                    👤
-                                  </div>
-                                  <p className="text-white text-[10px] font-medium">#{card.id}</p>
-                                </div>
-                              </div>
-                            </div>
+                            <Image
+                              src={card.image}
+                              alt={`수익 내역 ${card.id}`}
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 50vw, 208px"
+                            />
                           </div>
                         </div>
                       </motion.div>

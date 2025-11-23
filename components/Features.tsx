@@ -37,16 +37,16 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className={`grid md:grid-cols-2 gap-20 items-center ${!isEven ? 'md:grid-flow-dense' : ''}`}
+      className={`grid md:grid-cols-[1fr_1.4fr] gap-12 items-center ${!isEven ? 'md:grid-flow-dense' : ''}`}
     >
       <div className={`${!isEven ? 'md:col-start-2' : ''}`}>
-        <div className="text-base font-semibold tracking-wide mb-8 bg-gradient-to-r from-cyan-bright via-accent-light to-cyan bg-clip-text text-transparent">
+        <div className="text-sm font-semibold tracking-wide mb-6 bg-gradient-to-r from-cyan-bright via-accent-light to-cyan bg-clip-text text-transparent">
           {feature.category}
         </div>
-        <h3 className="text-5xl md:text-6xl font-black mb-10 text-white leading-[1.2]">
+        <h3 className="text-4xl md:text-5xl font-black mb-8 text-white leading-[1.2]">
           {feature.title}
         </h3>
-        <p className="text-lg md:text-xl text-gray-400 leading-loose mb-12">
+        <p className="text-base md:text-lg text-gray-400 leading-loose mb-10">
           {feature.description}
         </p>
         <button className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white font-medium text-base transition-all duration-300 flex items-center gap-2 group">
@@ -57,15 +57,13 @@ function FeatureCard({ feature, index }: { feature: typeof features[0], index: n
       <div className={`relative ${!isEven ? 'md:col-start-1 md:row-start-1' : ''}`}>
         {/* 영롱한 그라데이션 배경 효과 */}
         <div className="absolute inset-0 bg-gradient-to-br from-cyan/20 via-purple/15 to-mint/20 rounded-3xl blur-3xl opacity-60"></div>
-        <div className="absolute -inset-4 bg-gradient-to-tr from-accent/10 via-transparent to-cyan/10 rounded-3xl blur-2xl"></div>
-        
-        <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-dark/50 backdrop-blur-sm shadow-2xl">
+        <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-dark/50 backdrop-blur-sm shadow-2xl group">
           <Image 
             src={feature.image} 
             alt={feature.title}
-            width={600}
-            height={400}
-            className="w-full h-auto"
+            width={1200}
+            height={750}
+            className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
           />
         </div>
       </div>
