@@ -13,8 +13,8 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-3xl font-bold text-white hover:text-accent transition-colors">
-            AlphaBot
+          <Link href="/" className="flex items-center text-3xl font-bold text-white hover:text-accent transition-colors">
+            <img src="/images/alphabot-logo.png" alt="" style={{width: "60px", objectFit: "contain"}} />AlphaBot
           </Link>
           
           <div className="hidden md:flex items-center space-x-12">
