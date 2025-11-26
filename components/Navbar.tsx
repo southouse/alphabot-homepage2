@@ -34,7 +34,7 @@ export default function Navbar() {
           
           <div className="flex items-center">
             <Link 
-              href="#contact" 
+              href="#contact"
               className="px-6 py-2.5 bg-gradient-to-r from-accent-dark to-purple text-white rounded-md font-semibold text-base hover:shadow-lg hover:shadow-purple/60 hover:from-purple hover:to-accent-dark transition-all"
             >
               시작하기

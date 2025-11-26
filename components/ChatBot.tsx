@@ -4,11 +4,44 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ChatBot() {
+  const [messages, setMessages] = useState([
+    {
+      from: "bot",
+      text: "안녕하세요! 👋\nAlpha Bot에 관심 가져주셔서 감사합니다.\n궁금하신 점을 말씀해주세요."
+    }
+  ]);
+
+  const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const botReply: Record<string, string> = {
+    "💰 수익률이 궁금해요": "우리 Alpha Bot의 평균 수익률은 월 5~10% 정도입니다.",
+    "📊 백테스트 결과는?": "지난 1년간의 백테스트 결과, 승률 78%를 기록했습니다.",
+    "🔒 안전성은 어떤가요?": "Alpha Bot은 리스크 관리 알고리즘을 적용하여 안전성을 최대화했습니다.",
+    "💬 상담 직원 연결하기(카카오톡)":
+      "오픈 카카오톡을 통해 메시지 남겨주시면 상담 직원이 친절하게 답변 해드립니다! 🤖"
+  };
+
+  const sendMessage = (msg?: string) => {
+    const text = msg ?? input;
+    if (!text.trim()) return;
+
+    // 유저 메시지 추가
+    setMessages(prev => [...prev, { from: "user", text }]);
+
+    // 봇 답변 추가 (빠른 질문일 경우)
+    if (botReply[text]) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, { from: "bot", text: botReply[text] }]);
+      }, 500);
+    }
+
+    setInput("");
+  };
 
   return (
     <>
-      {/* 챗봇 버튼 - 오른쪽 아래 고정 */}
+      {/* 챗봇 버튼 */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-8 right-8 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-accent via-purple to-primary shadow-lg shadow-accent/50 flex items-center justify-center group hover:shadow-xl hover:shadow-accent/70 transition-shadow"
@@ -56,8 +89,6 @@ export default function ChatBot() {
             </motion.svg>
           )}
         </AnimatePresence>
-        
-        {/* 펄스 애니메이션 */}
         <span className="absolute inset-0 rounded-full bg-accent/30 animate-ping"></span>
       </motion.button>
 
@@ -83,42 +114,72 @@ export default function ChatBot() {
             {/* 채팅 영역 */}
             <div className="p-4 h-[360px] overflow-y-auto">
               <div className="space-y-4">
-                {/* 봇 메시지 */}
-                <div className="flex gap-3">
-                  <div className="h-8 w-8 rounded-full bg-gradient-to-br from-accent to-primary flex-shrink-0 flex items-center justify-center">
-                    <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                      <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <div className="bg-accent/10 rounded-lg rounded-tl-none p-3 border border-accent/20">
-                      <p className="text-sm text-gray-200">
-                        안녕하세요! 👋<br />
-                        Alpha Bot에 관심 가져주셔서 감사합니다.<br />
-                        궁금하신 점을 말씀해주세요.
-                      </p>
-                    </div>
-                    <span className="text-xs text-gray-500 mt-1 block">방금 전</span>
-                  </div>
-                </div>
+                {messages.map((msg, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex gap-3"
+                  >
+                    {msg.from === "bot" ? (
+                      <>
+                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-accent to-primary flex-shrink-0 flex items-center justify-center">
+                          <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <div className="bg-accent/10 rounded-lg rounded-tl-none p-3 border border-accent/20">
+                            <p className="text-sm text-gray-200 whitespace-pre-line">
+                              {msg.text.split("\n").map((line, i) => (
+                                <span key={i}>
+                                  {line}
+                                  <br />
+                                </span>
+                              ))}
+                            </p>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="flex-1 text-right">
+                        <div className="inline-block bg-primary text-white p-3 rounded-lg rounded-tr-none">
+                          <p className="text-sm whitespace-pre-line">{msg.text}</p>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
 
-                {/* 빠른 답변 버튼 */}
+                {/* 빠른 질문 버튼 */}
                 <div className="space-y-2">
                   <p className="text-xs text-gray-400">빠른 질문</p>
                   <div className="flex flex-col gap-2">
-                    <button className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200">
-                      💰 수익률이 궁금해요
-                    </button>
-                    <button className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200">
-                      📊 백테스트 결과는?
-                    </button>
-                    <button className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200">
-                      🔒 안전성은 어떤가요?
-                    </button>
-                    <button className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200">
-                      💬 상담 신청하기
-                    </button>
+                    {[
+                      "💰 수익률이 궁금해요",
+                      "📊 백테스트 결과는?",
+                      "🔒 안전성은 어떤가요?",
+                      "💬 상담 직원 연결하기(카카오톡)"
+                    ].map((q, idx) => (
+                      <button
+                        key={idx}
+                        className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200"
+                        onClick={() => {
+                          if (q === "💬 상담 직원 연결하기(카카오톡)") {
+                            // ✅ 메시지 추가 + 링크 열기
+                            setMessages(prev => [...prev, { from: "bot", text: botReply[q] }]);
+                            window.open("https://open.kakao.com/o/sxG0Yfeh", "_blank");
+                          } else {
+                            sendMessage(q);
+                          }
+                        }}
+                      >
+                        {q}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
