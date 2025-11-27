@@ -14,10 +14,24 @@ export default function ChatBot() {
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  // ✅ 고정 상담 메시지 (HTML 링크 포함)
+const defaultReply = `상담이 필요하신가요? 🧐<br>아래 링크를 눌러주세요!<br>
+                      친절한 상담사가 답변 해드립니다!! 😊<br />
+                      <a href="https://open.kakao.com/o/sxG0Yfeh" target="_blank" class="chat-link kakao">
+                        카카오톡 상담하기
+                      </a>
+                      <a href="https://t.me/Alpha_bot1004" target="_blank" class="chat-link telegram">
+                        텔레그램 상담하기
+                      </a>
+                      `;
+
+
   const botReply: Record<string, string> = {
     "💰 수익률이 궁금해요": "우리 Alpha Bot의 평균 수익률은 월 5~10% 정도입니다.",
     "📊 백테스트 결과는?": "지난 1년간의 백테스트 결과, 승률 78%를 기록했습니다.",
     "🔒 안전성은 어떤가요?": "Alpha Bot은 리스크 관리 알고리즘을 적용하여 안전성을 최대화했습니다.",
+
+    // 상담 버튼은 링크로 대체되지 않도록 유지
     "💬 상담 직원 연결하기(카카오톡)":
       "오픈 카카오톡을 통해 메시지 남겨주시면 상담 직원이 친절하게 답변 해드립니다! 🤖",
     "💬 상담 직원 연결하기(텔레그램)":
@@ -31,10 +45,15 @@ export default function ChatBot() {
     // 유저 메시지 추가
     setMessages(prev => [...prev, { from: "user", text }]);
 
-    // 봇 답변 추가 (빠른 질문일 경우)
+    // 빠른 질문일 경우
     if (botReply[text]) {
       setTimeout(() => {
         setMessages(prev => [...prev, { from: "bot", text: botReply[text] }]);
+      }, 500);
+    } else {
+      // 🔥 일반 입력일 경우 → 고정 답변만 출력
+      setTimeout(() => {
+        setMessages(prev => [...prev, { from: "bot", text: defaultReply }]);
       }, 500);
     }
 
@@ -102,7 +121,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-28 right-8 z-40 w-96 h-[500px] bg-gradient-to-br from-[rgba(15,23,42,0.95)] to-[rgba(30,41,59,0.95)] backdrop-blur-xl rounded-2xl shadow-2xl border border-accent/20 overflow-hidden"
+            className="fixed bottom-28 right-8 z-40 w-96 h-[520px] bg-gradient-to-br from-[rgba(15,23,42,0.95)] to-[rgba(30,41,59,0.95)] backdrop-blur-xl rounded-2xl shadow-2xl border border-accent/20 overflow-hidden"
           >
             {/* 헤더 */}
             <div className="p-4 border-b border-accent/20 bg-gradient-to-r from-accent/10 to-primary/10">
@@ -135,14 +154,11 @@ export default function ChatBot() {
                         </div>
                         <div className="flex-1">
                           <div className="bg-accent/10 rounded-lg rounded-tl-none p-3 border border-accent/20">
-                            <p className="text-sm text-gray-200 whitespace-pre-line">
-                              {msg.text.split("\n").map((line, i) => (
-                                <span key={i}>
-                                  {line}
-                                  <br />
-                                </span>
-                              ))}
-                            </p>
+                            {/* 🔥 링크가 있는 HTML 메시지 렌더링 */}
+                            <p
+                              className="text-sm text-gray-200 whitespace-pre-line"
+                              dangerouslySetInnerHTML={{ __html: msg.text.replace(/\n/g, "<br />") }}
+                            />
                           </div>
                         </div>
                       </>
@@ -172,15 +188,12 @@ export default function ChatBot() {
                         className="text-left p-3 rounded-lg bg-primary/10 hover:bg-primary/20 border border-primary/20 transition-colors text-sm text-gray-200"
                         onClick={() => {
                           if (q === "💬 상담 직원 연결하기(카카오톡)") {
-                            // ✅ 메시지 추가 + 링크 열기
                             setMessages(prev => [...prev, { from: "bot", text: botReply[q] }]);
                             window.open("https://open.kakao.com/o/sxG0Yfeh", "_blank");
-                          } if (q === "💬 상담 직원 연결하기(텔레그램)"){
-                            // ✅ 메시지 추가 + 링크 열기
+                          } else if (q === "💬 상담 직원 연결하기(텔레그램)") {
                             setMessages(prev => [...prev, { from: "bot", text: botReply[q] }]);
                             window.open("https://t.me/Alpha_bot1004", "_blank");
-                          }
-                          else {
+                          } else {
                             sendMessage(q);
                           }
                         }}
@@ -199,15 +212,21 @@ export default function ChatBot() {
                 <input
                   type="text"
                   placeholder="메시지를 입력하세요..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
                   className="flex-1 px-4 py-2 bg-[rgba(15,23,42,0.6)] border border-accent/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 transition-colors"
                 />
-                <button className="px-4 py-2 bg-gradient-to-r from-accent to-primary rounded-lg hover:shadow-lg hover:shadow-accent/50 transition-all">
+                <button
+                  onClick={() => sendMessage()}
+                  className="px-4 py-2 bg-gradient-to-r from-accent to-primary rounded-lg hover:shadow-lg hover:shadow-accent/50 transition-all"
+                >
                   <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </button>
               </div>
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>

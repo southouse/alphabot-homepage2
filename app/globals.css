@@ -98,3 +98,19 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #5aa3f5, #20e4ff);
 }
+
+.chat-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.2s;
+  margin-right: 8px;
+}
+
+.chat-link.kakao:hover {
+  color: #FFCD00; /* 카카오톡 로고 색 */
+}
+
+.chat-link.telegram:hover {
+  color: #26A5DF; /* 텔레그램 로고 색 */
+}
