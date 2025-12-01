@@ -214,6 +214,12 @@ const defaultReply = `상담이 필요하신가요? 🧐<br>아래 링크를 눌
                   placeholder="메시지를 입력하세요..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault(); // 엔터 시 줄바꿈 방지
+                      sendMessage();
+                    }
+                  }}
                   className="flex-1 px-4 py-2 bg-[rgba(15,23,42,0.6)] border border-accent/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-accent/40 transition-colors"
                 />
                 <button
